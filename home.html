@@ -52,6 +52,107 @@
               <tbody id="contentRows"></tbody>
             </table>
           </div>
+
+		  <!-- Edit Contact -->
+		  <div id="editFormDiv" style="display:none;">
+			<h2>Edit Contact</h2>
+			<form class="form-horizontal" role="form" id="addForm">
+			  
+			  <!-- Contact Info: First Name -->
+			  <div class="form-group row">
+				<label for="addFirstName" class="col-md-4 control-label">
+                  First Name:
+				</label>
+				<div class="col-md-8">
+                  <input type="text" 
+						 class="form-control"
+						 id="addFirstName"
+						 placeholder="First Name" 
+						 required>
+				</div>
+			  </div>
+
+			  <!-- Contact Info: Last Name -->
+			  <div class="form-group row"> 
+				<label for="addLastName" class="col-md-4 control-label">
+				  Last Name:
+				</label>
+				<div class="col-md-8">
+				  <input type="text" 
+						 class="form-control"
+						 id="addLastName"
+						 placeholder="Last Name" 
+						 required>
+				</div>
+			  </div>
+
+			  <!-- Contact Info: Company -->
+			  <div class="form-group row"> 
+				<label for="addCompany" class="col-md-4 control-label">
+				  Company:
+				</label>
+
+				<div class="col-md-8">
+				  <input type="text" 
+						 class="form-control"
+						 id="addCompany"
+						 placeholder="Company" 
+						 required>
+				</div>
+			  </div>
+			  
+			  <!-- Contact Info: Email -->
+			  <div class="form-group row">
+				<label for="addEmail" class="col-md-4 control-label">
+				  Email:
+				</label>
+				<div class="col-md-8">
+				  <input type="email" 
+						 class="form-control"
+						 id="addEmail"
+						 placeholder="Email" 
+						 required>
+				</div>
+			  </div>
+
+			  <!-- Contact Info: Phone -->
+			  <div class="form-group row">
+				<label for="addPhone" class="col-md-4 control-label">
+				  Phone:
+				</label>
+				<div class="col-md-8">
+				  <input type="tel" 
+						 class="form-control"
+						 id="addPhone"
+						 placeholder="Phone" 
+						 >
+				</div>
+			  </div>
+
+			  <!-- Buttons for update, cancel -->
+			  <div class="form-group row">
+				<div class="offset-md-3 col-md-3">
+				  <input type="hidden" id="editContactId">
+				  <button type="button"
+						  id="editCancelButton"
+						  class="btn btn-danger"
+						  onclick="hideEditForm()">
+					Cancel
+				  </button>
+				</div>
+				<div class="col-md-6">
+				  <button type="button"
+						  id="updateButton"
+						  class="btn btn-success">
+					Update Contact
+				  </button>
+				</div>
+			  </div>
+
+			  
+			</form>
+           </div>
+		  
         </div>
 
         <!-- container for form -->
@@ -140,6 +241,7 @@
 				 </button>
 			   </div>
 			 </div>
+			 
 		   </form>
         </div> 
       </div>
