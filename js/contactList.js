@@ -35,6 +35,13 @@ function loadContacts() {
 
 function addContact() {
     $('#addButton').click(function (event) {
+		var haveValidationErrors = checkAndDisplayValidationErrors($('#addForm').find('input'));
+        
+        if(haveValidationErrors) {
+            return false;
+        }
+
+		
         $.ajax({
            type: 'POST',
            url: 'http://contactlist.us-east-1.elasticbeanstalk.com/contact',
@@ -111,6 +118,13 @@ function hideEditForm() {
 
 function updateContact(contactId) {
     $('#updateButton').click(function(event) {
+		var haveValidationErrors = checkAndDisplayValidationErrors($('#addForm').find('input'));
+        
+        if(haveValidationErrors) {
+            return false;
+        }
+
+		
         $.ajax({
             type: 'PUT',
             url: 'http://contactlist.us-east-1.elasticbeanstalk.com/contact/' + $('#editContactId').val(),
@@ -151,4 +165,29 @@ function deleteContact(contactId) {
             loadContacts();
         }
     });
+}
+
+
+function checkAndDisplayValidationErrors(input) {
+    $('#errorMessages').empty();
+    
+    var errorMessages = [];
+    
+    input.each(function() {
+        if (!this.validity.valid) {
+            var errorField = $('label[for=' + this.id + ']').text();
+            errorMessages.push(errorField + ' ' + this.validationMessage);
+        }  
+    });
+    
+    if (errorMessages.length > 0){
+        $.each(errorMessages,function(index,message) {
+            $('#errorMessages').append($('<li>').attr({class: 'list-group-item list-group-item-danger'}).text(message));
+        });
+        // return true, indicating that there were errors
+        return true;
+    } else {
+        // return false, indicating that there were no errors
+        return false;
+    }
 }
